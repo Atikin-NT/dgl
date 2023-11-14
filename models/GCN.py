@@ -1,11 +1,12 @@
 import os
-os.environ["DGLBACKEND"] = "pytorch"
 from dgl.nn import GraphConv
 import torch.nn as nn
 import torch.nn.functional as F
 
+os.environ["DGLBACKEND"] = "pytorch"
 
-class GCN(nn.Module):  # nn.Module - PyTorch parent class for registering all layers, parameters, etc. inside the backing
+
+class GCN(nn.Module):
     def __init__(self, in_feats, h_feats, num_classes):
         super(GCN, self).__init__()
         self.conv1 = GraphConv(in_feats, h_feats)  # a graph convolution layer in which we specify the dimension of incoming and outgoing elements. In our case, this is a vector of words
