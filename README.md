@@ -34,4 +34,4 @@ This repository is used to provide files to the [dl-benchmark][dl-benchmark] rep
 
 <!-- LINKS -->
 [dl-benchmark]: https://github.com/itlab-vision/dl-benchmark
-[cora]: https://relational.fit.cvut.cz/dataset/CORA
+[cora]: https://paperswithcode.com/dataset/cora
