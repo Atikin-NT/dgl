@@ -5,35 +5,17 @@ import torch.nn.functional as F
 
 os.environ["DGLBACKEND"] = "pytorch"
 
-class CRD(nn.Module):
-    def __init__(self, d_in, d_out, p):
-        super(CRD, self).__init__()
-        self.conv = GraphConv(d_in, d_out)
-        self.p = p
-
-    def forward(self, x, edge_index):
-        x = self.conv(x, edge_index)
-        x = F.relu(x)
-        x = F.dropout(x, p=self.p)
-        return x
-
-class CLS(nn.Module):
-    def __init__(self, d_in, d_out):
-        super(CLS, self).__init__()
-        self.conv = GraphConv(d_in, d_out)
-
-    def forward(self, x, edge_index):
-        x = self.conv(x, edge_index)
-        x = F.log_softmax(x)
-        return x
-
 class CRD_CLS(nn.Module):
     def __init__(self, num_features, hidden, num_classes, dropout=0.2):
         super(CRD_CLS, self).__init__()
-        self.crd = CRD(num_features, hidden, dropout)
-        self.cls = CLS(hidden, num_classes)
+        self.conv1 = GraphConv(num_features, hidden)
+        self.p = dropout
+        self.conv2 = GraphConv(hidden, num_classes)
 
     def forward(self, g, in_feat):
-        x = self.crd(g, in_feat)
-        x = self.cls(g, x)
+        x = self.conv1(g, in_feat)
+        x = F.relu(x)
+        x = F.dropout(x, p=self.p)
+        x = self.conv2(g, x)
+        x = F.log_softmax(x)
         return x
