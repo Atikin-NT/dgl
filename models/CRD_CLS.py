@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 os.environ["DGLBACKEND"] = "pytorch"
 
-class CRD(torch.nn.Module):
+class CRD(nn.Module):
     def __init__(self, d_in, d_out, p):
         super(CRD, self).__init__()
         self.conv = GraphConv(d_in, d_out)
