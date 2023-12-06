@@ -25,8 +25,12 @@ the dictionary.
 - `models` directory for storing a model file in **pt** format , 
   as well as a python file with architecture.
 
-  - `GCN.py` file with a description of the model architecture.
-  - `model.pt` model file in **pt** format.
+  - `GCN.py` file describing the architecture of the GCN model.
+  - `APPNP.py` file describing the architecture of the [APPNP][appnp] model.
+  - `CRD_CLS.py` file describing the architecture of the [CRD_CLS][crd_cls] model.
+  - `gcn_model.pt` GCN model file in **pt** format.
+  - `appnp_model.pt` APPNP model file in **pt** format.
+  - `crd_cls_model.pt` CRD_CLS model file in **pt** format.
 
 ## Usage
 
@@ -35,3 +39,5 @@ This repository is used to provide files to the [dl-benchmark][dl-benchmark] rep
 <!-- LINKS -->
 [dl-benchmark]: https://github.com/itlab-vision/dl-benchmark
 [cora]: https://paperswithcode.com/dataset/cora
+[appnp]: https://paperswithcode.com/paper/adagcn-adaboosting-graph-convolutional
+[crd_cls]: https://paperswithcode.com/paper/optimization-of-graph-neural-networks-with
