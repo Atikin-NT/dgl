@@ -29,7 +29,7 @@ class CLS(nn.Module):
 
 class CRD_CLS(nn.Module):
     def __init__(self, num_features, hidden, num_classes, dropout=0.2):
-        super(Net, self).__init__()
+        super(CRD_CLS, self).__init__()
         self.crd = CRD(num_features, hidden, dropout)
         self.cls = CLS(hidden, num_classes)
 
