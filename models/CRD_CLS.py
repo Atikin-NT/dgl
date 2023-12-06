@@ -17,7 +17,7 @@ class CRD(nn.Module):
         x = F.dropout(x, p=self.p)
         return x
 
-class CLS(torch.nn.Module):
+class CLS(nn.Module):
     def __init__(self, d_in, d_out):
         super(CLS, self).__init__()
         self.conv = GraphConv(d_in, d_out)
@@ -27,7 +27,7 @@ class CLS(torch.nn.Module):
         x = F.log_softmax(x)
         return x
 
-class Net(torch.nn.Module):
+class Net(nn.Module):
     def __init__(self, num_features, hidden, num_classes, dropout=0.2):
         super(Net, self).__init__()
         self.crd = CRD(num_features, hidden, dropout)
