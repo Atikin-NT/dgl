@@ -27,7 +27,7 @@ class CLS(nn.Module):
         x = F.log_softmax(x)
         return x
 
-class Net(nn.Module):
+class CRD_CLS(nn.Module):
     def __init__(self, num_features, hidden, num_classes, dropout=0.2):
         super(Net, self).__init__()
         self.crd = CRD(num_features, hidden, dropout)
